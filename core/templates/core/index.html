@@ -6,6 +6,7 @@
             <div class="grid grid-cols-3 gap-3">
                   {% for item in items%}
                         <div>
+                              <!-- 這裡的 item 是對應 item app 中 urls.py 裡面的 app_name  -->
                               <a href="{% url 'item:details' item.id %}">
                                     <div>
                                           <img src="{{item.image.url}}"
@@ -29,6 +30,8 @@
                         <a href="#">
                               <div class="p-6 bg-white rounded-b-xl">
                                     <h2 class="text-2xl">{{category.name}}</h2>
+                                    <!-- category.items 返回與該Category實例關聯的Items的QuerySet。
+                                    count 方法計算該QuerySet中項目的數量，並將結果顯示在模板中。 -->
                                     <p class="text-gray-500">{{ category.items.count }} Items</p>
                               </div>
                         </a>

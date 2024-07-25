@@ -27,6 +27,7 @@ def items(request):
 
 def details(request, pk):
     item = get_object_or_404(Items, pk=pk)
+    # 將尚未出售且排除當前商品的前三項給抓出來
     related_items = Items.objects.filter(category=item.category, is_sold=False).exclude(pk=pk)[0:3]
 
     return render(request, 'item/detail.html', {
